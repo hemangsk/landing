@@ -1,12 +1,15 @@
+{% raw %}
 <!DOCTYPE html>
-<html>
+<html ng-app="coala">
 <head>
 
     <title>coala</title>
 
     <script src="vendors/jquery/jquery.min.js"></script>
     <script src="vendors/materialize/js/materialize.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/snippets.js"></script>
+    <script type="text/javascript" src="resources/js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="vendors/materialize/css/materialize.min.css">
 
     <link rel="stylesheet" type="text/css" href="vendors/bootstrap/css/bootstrap.min.css">
@@ -149,14 +152,14 @@
 
         <section>
             <div class="container">
-            <div class="examples">
+            <div class="examples" ng-controller="SnippetController as sc">
             <div class="container-title">getting started</div>
 
 
                 <div class="row">
                     <div class="col-md-4 example-select">
-                        <select>
-                            <option value="" selected>Python</option>
+                        <select ng-model="sc.lang_selected" ng-change="sc.setLang(sc.lang_selected)" ng-options="lang for lang in sc.languages">
+                            <option value="" disabled>Choose a Language</option>
                         </select>
 
                     </div>
@@ -165,12 +168,7 @@
                         <div class="card horizontal term-install-card">
                         <div class="card-stacked">
                             <div class="card-content">
-                                <p><strong>$</strong>  sudo pip3 install coala-bears</p>
-                                <p><strong>$</strong>  cat sum.py</p>
-                                <p>if i==1:</p>
-                                <p>&nbsp;&nbsp;&nbsp; print ("Yes")</p>
-                                <p><strong>$</strong>  coala --files "**.py" --bears PEP8Bear --save</p>
-                                <p><strong>$</strong>  coala</p>
+                                <pre ng-bind="sc.current_snippet"></pre>
                             </div>
                         </div>
                     </div>
@@ -280,5 +278,5 @@ $(document).ready(function () {
 })
 
 </script>
-
+{% endraw %}
 
