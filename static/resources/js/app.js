@@ -1,7 +1,6 @@
 (function(){
 	var app = angular.module('coala', []);
 
-
 	app.controller('SnippetController', function(){
 
 		self = this
@@ -45,6 +44,5 @@
 			templateUrl: '/partials/tabs/languages.html'
 		}
 	})
-
 
 })();

@@ -7,3 +7,7 @@ use_spaces = yeah
 [markdown]
 bears = MarkdownBear
 files = **.md
+
+[python]
+bears = PEP8Bear
+files = **.py
