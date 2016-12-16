@@ -2,7 +2,7 @@
 
     <div class="col-md-8 col-md-offset-2">
         <div class="input-field col-md-10">
-            <input placeholder="Search for a bear or a language" id="search" type="text" class="validate">
+            <input ng-model="searchText" placeholder="Search for a bear or a language" id="search" type="text" class="validate">
         </div>
         <div class="input-field col-md-2">
             <center>
@@ -17,9 +17,12 @@
 <section>
     <div class="container">
     <div class="row showcase">
-            <div class="card showcase-card">
-                <div class="card-content"></div>
-                <div class="card-action"></div>
+            <div ng-repeat="bear in lc.bearList | filter:searchText" class="card showcase-card">
+            	<div class="card-title">{{ bear.name }}</div>
+                <div class="card-content">{{ bear.desc | format_desc }}</div>
+                <div class="card-action">
+                <span ng-repeat="lang in bear.languages | limitTo:4">{{lang}} </span>
+                </div>
             </div>
     </div>
 </section>
@@ -34,9 +37,13 @@
     }
 
     .showcase-card{
-        width: 250px;
-        margin-left: 2em;
-        margin-right: 2em;
-        height: 150px;
+    	width: 300px;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        
+    }
+    .card-title{
+    	padding-left: 1em;
+    	padding-top: 0.3em;
     }
 </style>

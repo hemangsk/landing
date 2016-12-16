@@ -1,5 +1,5 @@
 (function(){
-	var app = angular.module('coala', []);
+	var app = angular.module('coala', ['ngStorage']);
 
 	app.controller('SnippetController', function(){
 
@@ -38,11 +38,51 @@
 		}
 	})
 
-	app.directive('languages', function () {
+	app.directive('languages',  ['$http', function ($http) {
 		return {
 			restrict: 'E',
-			templateUrl: '/partials/tabs/languages.html'
+			templateUrl: '/partials/tabs/languages.html',
+			controller: function ($scope, $sessionStorage) {
+				self = this
+				$scope.$storage = $sessionStorage
+				self.bearList = []
+				if($scope.$storage.bear_data){			
+					self.bearList = ($scope.$storage.bear_data)		
+				}else{
+					$http.get('http://localhost:5000/api/list/bears')
+					.then(function(data){
+						arr = []
+						angular.forEach(Object.keys(data["data"]), function(value, key){
+							arr.push({
+								"name" : value,
+								"desc" : data["data"][value]["desc"],
+								"languages": data["data"][value]["languages"]
+							})		
+						})
+						self.bearList = arr 
+						$scope.$storage.bear_data = arr
+					})
+				}
+			},
+			controllerAs: 'lc'
 		}
-	})
+	}])
+
+	app.filter('format_desc', function () {
+        return function (value) {
+            if (!value) return '';
+            var lastspace = value.indexOf('.');
+            if (lastspace != -1) {
+                if (value.charAt(lastspace-1) == ',') {
+                	lastspace = lastspace - 1;
+                }
+                  value = value.substr(0, lastspace);
+            }
+
+            return value;
+        };
+    });
+
+	
 
 })();
