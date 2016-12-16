@@ -1,12 +1,12 @@
 {
   "name": "landing",
-  "homepage": "https://github.com/hemangsk/landing",
+  "homepage": "https://github.com/coala/landing",
   "authors": [
     "Hemang Kumar <hemangsk@gmail.com>"
   ],
   "description": "",
   "main": "",
-  "license": "MIT",
+  "license": "AGPLv3.0",
   "private": true,
   "ignore": [
     "**/.*",

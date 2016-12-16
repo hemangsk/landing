@@ -1,1 +1,5 @@
 __pycache__/
+**.orig
+node_modules/
+static/components/
+data.json
