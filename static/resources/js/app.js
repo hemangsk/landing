@@ -86,9 +86,9 @@
 
 				}
 
-				self.setCurrentBear = function (bear_index) {
-					self.currentBearName = self.bearList[bear_index]["name"]
-					self.currentBearDescription = self.bearList[bear_index]["desc"]		
+				self.setCurrentBear = function (bear_selected) {
+					self.currentBearName = bear_selected["name"]
+					self.currentBearDescription = bear_selected["desc"]	
 				}
 
 				self.fetchBearData = function () {
