@@ -38,14 +38,24 @@
 		}
 	})
 
-	app.directive('languages',  ['$http', function ($http) {
+	app.directive('languages',  ['$http',  '$timeout' ,function ($http, $timeout) {
 		return {
 			restrict: 'E',
 			templateUrl: '/partials/tabs/languages.html',
 			controller: function ($scope, $sessionStorage) {
+
+				
 				self = this
 				$scope.$storage = $sessionStorage
 				self.bearList = []
+				self.theatreLoader = null;
+				self.theatreLoaderMessages = [
+					"Waking up little joeys",
+					"Dodging the bushfires",
+					"Gulping the eucalypt"
+				]
+				
+
 				if($scope.$storage.bear_data){			
 					self.bearList = ($scope.$storage.bear_data)		
 				}else{
@@ -63,6 +73,55 @@
 						$scope.$storage.bear_data = arr
 					})
 				}
+
+				self.showTheatre = function (bear_index) {	
+					$(document).ready(function () {
+						$('#modal1').modal('open');
+					})
+					self.theatreLoader = true;		
+
+					self.setCurrentBear(bear_index);
+					self.fetchBearData();
+
+
+				}
+
+				self.setCurrentBear = function (bear_index) {
+					self.currentBearName = self.bearList[bear_index]["name"]
+					self.currentBearDescription = self.bearList[bear_index]["desc"]		
+				}
+
+				self.fetchBearData = function () {
+					
+					self.theatreLoaderMessage = self.theatreLoaderMessages[0]
+					var changeMessagePromise1 = $timeout(function () {
+						self.theatreLoaderMessage = self.theatreLoaderMessages[1]
+					}, 3000)
+
+					var changeMessagePromise2 = $timeout(function () {
+						self.theatreLoaderMessage = self.theatreLoaderMessages[2]
+					}, 6000)
+
+					$http.get('http://localhost:5000/api/search/bears?bear=' + self.currentBearName)
+					.then(function (data) {
+						console.log(data["data"])
+						self.currentBear = data["data"];
+						console.log("SELF BEAR");
+						console.log(self.currentBear);
+						self.theatreLoader = null;
+
+						try{
+							cancel(changeMessagePromise1);
+							cancel(changeMessagePromise2);
+						}catch(err){
+							console.log("IGNORE: Unsuccessfull attempt to cancel promise!");
+						}
+
+						self.theatreLoaderMessage = "";
+						
+					})		
+				}
+
 			},
 			controllerAs: 'lc'
 		}
@@ -83,6 +142,6 @@
         };
     });
 
-	
+
 
 })();

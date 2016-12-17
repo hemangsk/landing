@@ -5353,7 +5353,7 @@ button.btn-floating {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  max-height: 70%;
+  max-height: 95%;
   width: 55%;
   margin: auto;
   overflow-y: auto;
@@ -5383,7 +5383,7 @@ button.btn-floating {
   border-radius: 0 0 2px 2px;
   background-color: #fafafa;
   padding: 4px 6px;
-  height: 56px;
+  min-height: 56px;
   width: 100%;
 }
 
