@@ -31,12 +31,7 @@
 		}
 	})
 
-	app.directive('getinvolved', function () {
-		return {
-			restrict: 'E',
-			templateUrl: '/partials/tabs/getinvolved.html'
-		}
-	})
+
 
 	app.directive('languages',  ['$http',  '$timeout' ,function ($http, $timeout) {
 		return {
@@ -73,8 +68,13 @@
 						$scope.$storage.bear_data = arr
 					})
 				}
+				self.setCurrentBear = function (bear_selected) {
+					self.currentBearName = bear_selected["name"]
+					self.currentBearDescription = bear_selected["desc"]	
+				}
 
 				self.showTheatre = function (bear_selected) {	
+					console.log("Im called!");
 					$(document).ready(function () {
 						$('#modal1').modal('open');
 					})
@@ -86,10 +86,7 @@
 
 				}
 
-				self.setCurrentBear = function (bear_selected) {
-					self.currentBearName = bear_selected["name"]
-					self.currentBearDescription = bear_selected["desc"]	
-				}
+				
 
 				self.fetchBearData = function () {
 					
@@ -124,6 +121,42 @@
 
 			},
 			controllerAs: 'lc'
+		}
+	}])
+
+
+		app.directive('getinvolved', ['$http', function ($http) {
+		return {
+			restrict: 'E',
+			templateUrl: '/partials/tabs/getinvolved.html',
+			controller: function ($scope, $sessionStorage) {
+				var self = this
+				$scope.$get_involved_storage = ''
+				self.contributors
+				if($scope.$storage.contributors_data){
+					console.log("data already");
+					self.contributors = $scope.$storage.contributors_data
+					console.log(self.contributors);
+				}else{
+					$http.get("https://api.github.com/repos/coala/coala/contributors")
+					.then(function (data) {
+					console.log(data["data"]);
+					angular.forEach(data["data"], function(value){
+						$http.get(value["url"])
+						.then(function (user_data) {
+							value["user_data"] = user_data["data"]
+
+							self.contributors = data["data"];
+							$scope.$get_involved_storage.contributors_data = data["data"]
+						})
+					});
+					
+				})
+				}
+
+				
+			},
+			controllerAs: "gic"
 		}
 	}])
 
