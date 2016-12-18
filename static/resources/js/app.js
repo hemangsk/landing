@@ -74,13 +74,13 @@
 					})
 				}
 
-				self.showTheatre = function (bear_index) {	
+				self.showTheatre = function (bear_selected) {	
 					$(document).ready(function () {
 						$('#modal1').modal('open');
 					})
 					self.theatreLoader = true;		
 
-					self.setCurrentBear(bear_index);
+					self.setCurrentBear(bear_selected);
 					self.fetchBearData();
 
 
