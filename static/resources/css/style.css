@@ -268,3 +268,7 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 
   color: #d1d1d1;
 }
+
+.card-title{
+  overflow-wrap: break-word !important;
+}

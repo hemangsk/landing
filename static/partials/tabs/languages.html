@@ -19,7 +19,7 @@
 		<div class="row showcase">
 
 			<div ng-click="lc.showTheatre(bear)" ng-repeat="bear in lc.bearList | filter:searchText" class="card card-main showcase-card">
-				<div class="card-title">{{ bear.name }}</div>
+				<div class="card-title name-bear">{{ bear.name }}</div>
 				<div class="card-content">{{ bear.desc | format_desc }}</div>
 				<div class="card-action">
 					<span ng-repeat="lang in bear.languages | limitTo:4">{{lang}} </span>
@@ -117,6 +117,11 @@
 	.card-title{
 		padding-left: 1em;
 		padding-top: 0.3em;
+		
+	}
+
+	.name-bear{
+		font-size: 18px !important;
 	}
 
 	a > .card{

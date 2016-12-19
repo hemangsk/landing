@@ -110,25 +110,28 @@
             </div>
         </section>
 
-        <section>
+        <section ng-controller="SnippetController as sc">
             <div class="container">
-            <div class="examples" ng-controller="SnippetController as sc">
+            <div class="examples" >
             <div class="container-title">getting started</div>
 
 
                 <div class="row">
                     <div class="col-md-4 example-select">
-                        <select ng-model="sc.lang_selected" ng-change="sc.setLang(sc.lang_selected)" ng-options="lang for lang in sc.languages">
+                        <select ng-model="sc.lang_selected" ng-options="lang for lang in sc.languages">
                             <option value="" disabled>Choose a Language</option>
                         </select>
 
                     </div>
-
+                  
                     <div class="col-md-8 example-card">
                         <div class="card horizontal term-install-card">
                         <div class="card-stacked">
                             <div class="card-content">
-                                <pre ng-bind="sc.current_snippet"></pre>
+                                <pre class="snippet-card">
+                                   
+                                   {{ sc.snip[sc.lang_selected]}}
+                                </pre>
                             </div>
                         </div>
                     </div>
@@ -137,3 +140,9 @@
                 </div>
             </div>
         </section>
+
+        <style type="text/css">
+            .snippet-card{
+                    white-space: pre-line !important;
+            }
+        </style>
