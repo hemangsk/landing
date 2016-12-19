@@ -42,6 +42,7 @@
 				$scope.$storage = $sessionStorage
 				self.bearList = []
 				self.theatreLoader = null;
+				self.lang_loader = true;
 				self.theatreLoaderMessages = [
 					"Waking up little joeys",
 					"Dodging the bushfires",
@@ -52,8 +53,10 @@
 				if($scope.$storage.bear_data){			
 					self.bearList = ($scope.$storage.bear_data)		
 				}else{
+					
 					$http.get('http://localhost:5000/api/list/bears')
 					.then(function(data){
+						
 						arr = []
 						angular.forEach(Object.keys(data["data"]), function(value, key){
 							arr.push({
@@ -63,6 +66,7 @@
 							})		
 						})
 						self.bearList = arr 
+						self.lang_loader = false;
 						$scope.$storage.bear_data = arr
 					})
 				}

@@ -15,20 +15,69 @@
 </div>
 
 <section>
+
 	<div class="container">
 		<div class="row showcase">
+<div ng-show="lc.lang_loader" >
+ <center>
+			 <div class="preloader-wrapper big active">
 
-			<div ng-click="lc.showTheatre(bear)" ng-repeat="bear in lc.bearList | filter:searchText" class="card card-main showcase-card">
-				<div class="card-title name-bear">{{ bear.name }}</div>
-				<div class="card-content">{{ bear.desc | format_desc }}</div>
-				<div class="card-action">
-					<span ng-repeat="lang in bear.languages | limitTo:4">{{lang}} </span>
-				</div>
-			</div>
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
 
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
 
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+        <div class="bear-loader-msg">Sit tight! Calling all the bears!</div>
+</center>
+</div>
+
+	<div ng-click="lc.showTheatre(bear)" ng-repeat="bear in lc.bearList | filter:searchText" class="card card-main showcase-card">
+		<div class="card-title name-bear">{{ bear.name }}</div>
+		<div class="card-content">{{ bear.desc | format_desc }}</div>
+		<div class="card-action">
+			<span ng-repeat="lang in bear.languages | limitTo:4">{{lang}} </span>
 		</div>
 	</div>
+
+
+</div>
+</div>
 </section>
 
 <div id="modal1" class="modal">
@@ -53,7 +102,7 @@
 				<div ng-show="lc.currentBear.LANGUAGES.length>0" class="small-heading">LANGUAGES</div>
 				<span class="candetect chip" ng-repeat="langs in lc.currentBear.LANGUAGES">{{ langs }}</span>
 			</div>
-		
+
 
 		</div>
 		
@@ -63,25 +112,25 @@
 			</div>
 
 			<div class="row author-row">
-			<center>
-			<div class="col-md-4">
-				<div ng-show="lc.currentBear.AUTHORS.length>0" class="author">
-					<div class="small-heading">AUTHORS</div>
-					<span class="authors" ng-repeat="auth in lc.currentBear.AUTHORS">{{ auth }}</span>
+				<center>
+					<div class="col-md-4">
+						<div ng-show="lc.currentBear.AUTHORS.length>0" class="author">
+							<div class="small-heading">AUTHORS</div>
+							<span class="authors" ng-repeat="auth in lc.currentBear.AUTHORS">{{ auth }}</span>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div ng-show="lc.currentBear.AUTHORS_EMAILS.length>0" class="email">
+							<div class="small-heading">AUTHORS EMAIL</div>
+							<span class="authors" ng-repeat="auth in lc.currentBear.AUTHORS_EMAILS">{{ auth }}</span>
+						</div>
+					</div>
+					<div class="col-md-4"></div>
+					<div ng-show="lc.currentBear.LICENSE" class="license">
+						<div class="small-heading">LICENSE</div>
+						<span class="authors">{{ lc.currentBear.LICENSE }}</span>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<div ng-show="lc.currentBear.AUTHORS_EMAILS.length>0" class="email">
-					<div class="small-heading">AUTHORS EMAIL</div>
-					<span class="authors" ng-repeat="auth in lc.currentBear.AUTHORS_EMAILS">{{ auth }}</span>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
-				<div ng-show="lc.currentBear.LICENSE" class="license">
-					<div class="small-heading">LICENSE</div>
-					<span class="authors">{{ lc.currentBear.LICENSE }}</span>
-				</div>
-			</div>
 			</center>
 		</div>
 
@@ -121,7 +170,7 @@
 	}
 
 	.name-bear{
-		font-size: 18px !important;
+		font-size: 22px !important;
 	}
 
 	a > .card{
@@ -169,23 +218,23 @@
 	}
 
 	.candetect{
-		    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+		font-size: 13px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
 	}
 
 	.small-heading{
 		font-size: 0.9em;
-    padding: 0.5em;
-    font-weight: 400;
-    color: lightgoldenrodyellow;
-    letter-spacing: 0.1em;
+		padding: 0.5em;
+		font-weight: 400;
+		color: lightgoldenrodyellow;
+		letter-spacing: 0.1em;
 	}
 
 	.authors{
-		    font-size: 14px;
-    color: wheat;
-    font-weight: 400;
+		font-size: 14px;
+		color: wheat;
+		font-weight: 400;
 	}
 
 	.author-row{
@@ -200,9 +249,9 @@
 		
 
 		$('.explore').click(function () {
-			 $('html,body').animate({
-       		 scrollTop: $(".showcase").offset().top},
-        	'slow');
+			$('html,body').animate({
+				scrollTop: $(".showcase").offset().top},
+				'slow');
 		})
 
 		$('.modal').modal({

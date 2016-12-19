@@ -22,13 +22,14 @@
 </div>
 <section>
     <div class="container"><br>
-        <div class="gi-container-title-header">meet</div>
-        <div class="gi-container-title">the community</div>
+
+        <div class="gi-container-title">meet the community</div>
+     
     </div>
     <div class="container">
-        <div class="row showcase">
+        <div class="row showcase-gi">
 
-            <div  ng-repeat="member in gic.contributors" class="card card-main showcase-card">
+            <div  ng-repeat="member in gic.contributors" class="card card-main showcase-card-gi">
                <div class="empty">
                </div>
                <div class="card-action profile-data" >
@@ -63,14 +64,14 @@
 </section>
 
 <style>
-    .showcase{
+    .showcase-gi{
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        margin-top: 4em;
+        margin-top: 1em;
     }
 
-    .showcase-card{
+    .showcase-card-gi{
         width: 200px;
         margin-left: 0.5em;
         margin-right: 0.5em;
@@ -140,8 +141,8 @@
     }
 .gi-container-title{
         font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-    font-size: 2em;
-    font-weight: 200;
+    font-size: 5em;
+    font-weight: 100;
     text-align: center;
 }
 
