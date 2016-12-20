@@ -42,7 +42,7 @@
 				$scope.$storage = $sessionStorage
 				self.bearList = []
 				self.theatreLoader = null;
-				self.lang_loader = true;
+				self.lang_loader = false;
 				self.theatreLoaderMessages = [
 					"Waking up little joeys",
 					"Dodging the bushfires",
@@ -53,7 +53,7 @@
 				if($scope.$storage.bear_data){			
 					self.bearList = ($scope.$storage.bear_data)		
 				}else{
-					
+					self.lang_loader=true;
 					$http.get('http://localhost:5000/api/list/bears')
 					.then(function(data){
 						

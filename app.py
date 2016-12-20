@@ -27,9 +27,9 @@ def search_bears():
     with open('data.json') as json_data:
         bear_data = json.load(json_data)
         for bear in bear_data["bears"]:
-        	if(bear["name"] == bear_query):
-        		return jsonify(**bear)
-        return jsonify({"404" : "Bear not found! Please recheck the bear name!"})
+            if(bear["name"] == bear_query):
+                return jsonify(**bear)
+        return jsonify({"404": "Bear not found! Please recheck the bear name!"})
 
 
 @app.route('/api/list/bears/')
@@ -40,9 +40,10 @@ def list_bears():
     with open('data.json') as json_data:
         bear_json = json.load(json_data)
         for bear in bear_json["bears"]:
-        	bear_desc = bear["metadata"]["desc"]
-        	bear_languages = bear["LANGUAGES"]
-        	res[bear["name"]] = { "desc" : bear_desc, "languages": bear_languages }
+            bear_desc = bear["metadata"]["desc"]
+            bear_languages = bear["LANGUAGES"]
+            res[bear["name"]] = {"desc": bear_desc,
+                                 "languages": bear_languages}
         return jsonify(**res)
 
 
