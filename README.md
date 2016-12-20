@@ -52,7 +52,7 @@ MEET THE COMMUNITY SECTION
 -----
 
 ## Plans
-[The Roadmap for http:coala.io](https://github.com/coala/landing/issues/15)
+[The Roadmap for coala.io](https://github.com/coala/landing/issues/15)
 
 -----
 ## Contribution Guidelines
