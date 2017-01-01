@@ -2,20 +2,36 @@
 Hello! Welcome to the coala.io landing page of the future! (This is a WIP, the "website" repo is the current one.)
 ```
 <br>
-![](github/header.png)
+![](frontend/github/header.png)
 
 ##Get Started
+
 
 ```
 $ git clone https://github.com/coala/landing.git
 $ cd landing
-$ git checkout hemangsk/flask-api
-$ bower install
-$ pip install -r requirements.txt
-$ export FLASK_APP=app.py
-$ flask run
+$ git fetch origin
+$ git checkout hemangsk/django
 ```
-Hooray! The site is up and running at http://localhost:5000
+
+
+### Backend
+```
+$ cd backend/coala_web && pip install -r requirements.txt
+$ cd coala_web 
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py runserver
+```
+
+
+### Frontend
+```
+cd frontend && python -m SimpleHTTPServer 8090
+```
+
+
+Hooray! The site is up and running at http://localhost:8090
 
 -----
 
@@ -23,31 +39,31 @@ Hooray! The site is up and running at http://localhost:5000
 ```
 HOME TAB
 ```
-![](github/img1.png)
+![](frontend/github/img1.png)
 
 
 ```
 LANGUAGES TAB
 ```
-![](github/img2.png)
+![](frontend/github/img2.png)
 
 
 ```
 BEAR DETAILS VIEW
 ```
-![](github/img3.png)
+![](frontend/github/img3.png)
 
 
 ```
 GET INVOLVED TAB
 ```
-![](github/img4.png)
+![](frontend/github/img4.png)
 
 
 ```
 MEET THE COMMUNITY SECTION
 ```
-![](github/img5.png)
+![](frontend/github/img5.png)
 
 -----
 
