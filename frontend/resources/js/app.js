@@ -54,7 +54,7 @@
 					self.bearList = ($scope.$storage.bear_data)		
 				}else{
 					self.lang_loader=true;
-					$http.get('http://localhost:5000/api/list/bears')
+					$http.get('http://localhost:8000/list/bears')
 					.then(function(data){
 						
 						arr = []
@@ -101,7 +101,7 @@
 						self.theatreLoaderMessage = self.theatreLoaderMessages[2]
 					}, 6000)
 
-					$http.get('http://localhost:5000/api/search/bears?bear=' + self.currentBearName)
+					$http.get('http://localhost:8000/search/bears?bear=' + self.currentBearName)
 					.then(function (data) {
 						console.log(data["data"])
 						self.currentBear = data["data"];
