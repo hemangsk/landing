@@ -7,7 +7,6 @@ class Bear(models.Model):
     desc = models.TextField()
     languages = models.TextField()
 
-
     def set_languages(self, languages_array):
         self.languages = json.dumps(languages_array)
 

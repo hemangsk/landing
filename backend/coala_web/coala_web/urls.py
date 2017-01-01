@@ -15,28 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from rest_framework import serializers, viewsets, routers
-# Serializers define the API representation.
-from bears.models import Bear
 
-
-class BearSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Bear
-        fields = '__all__'
-
-# ViewSets define the view behavior.
-class BearViewSet(viewsets.ModelViewSet):
-    queryset = Bear.objects.all()
-    serializer_class = BearSerializer
-
-# Routers provide an easy way of automatically determining the URL conf.
-router = routers.DefaultRouter()
-router.register(r'bears', BearViewSet)
-
-
+from bears.views import home, search
+from utils.bears.routers import router
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include(router.urls)),
+    url(r'^list/bears', home),
+    url(r'^search/bear', search),
+
 ]
