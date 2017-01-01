@@ -2,7 +2,7 @@
 Hello! Welcome to the coala.io landing page of the future! (This is a WIP, the "website" repo is the current one.)
 ```
 <br>
-![](frontend/github/header.png)
+![](/github/header.png)
 
 ##Get Started
 
@@ -39,31 +39,31 @@ Hooray! The site is up and running at http://localhost:8090
 ```
 HOME TAB
 ```
-![](frontend/github/img1.png)
+![](/github/img1.png)
 
 
 ```
 LANGUAGES TAB
 ```
-![](frontend/github/img2.png)
+![](/github/img2.png)
 
 
 ```
 BEAR DETAILS VIEW
 ```
-![](frontend/github/img3.png)
+![](/github/img3.png)
 
 
 ```
 GET INVOLVED TAB
 ```
-![](frontend/github/img4.png)
+![](/github/img4.png)
 
 
 ```
 MEET THE COMMUNITY SECTION
 ```
-![](frontend/github/img5.png)
+![](/github/img5.png)
 
 -----
 
